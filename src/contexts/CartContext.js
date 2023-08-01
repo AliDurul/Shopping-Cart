@@ -1,9 +1,30 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
+
+  const [itemAmount, setItemAmount] = useState(0)
+
+  const [total, setTotal] = useState(0)
+
+  useEffect(() => {
+  if(cart){
+    const amount = cart.reduce((acc,currentItem)=>{
+      return acc + currentItem.amount
+    },0)
+
+    const total = cart.reduce((acc,currentItem)=>{
+      return acc + currentItem.price * currentItem.amount
+    },0)
+    setTotal(total.toFixed(2))
+    setItemAmount(amount)
+  }
+  
+  }, [cart])
+  
+
 
   /*  const addToCart = (id, product) => {
     const newItem = { ...product, amount: 1 };
@@ -42,9 +63,7 @@ const CartProvider = ({ children }) => {
   };
 
   const removeFromCart = (id) => {
-    const newCart = cart.filter((item) => {
-      return item.id !== id;
-    });
+    const newCart = cart.filter((item) => item.id !== id);
     setCart(newCart);
   };
 
@@ -57,11 +76,22 @@ const CartProvider = ({ children }) => {
     addToCart(updatedItem.id)
   }
 
+  const decreaseAmount = (id) => {
+    const updatedItem = cart.findIndex((item) => item.id === id);
+    if (updatedItem !== -1) {
+      const newCart = [...cart];
+      if(newCart[updatedItem].amount === 1){
+        removeFromCart(id)
+      }else{
+        newCart[updatedItem].amount -= 1;
+        setCart(newCart);
+      }
+    } 
+  }
 
-  
 
 
-  const values = { addToCart, removeFromCart, cart ,clearCart,increaseAmount};
+  const values = { total,itemAmount,addToCart, removeFromCart, cart ,clearCart,increaseAmount,decreaseAmount};
 
   return <CartContext.Provider value={values}>{children}</CartContext.Provider>;
 };
