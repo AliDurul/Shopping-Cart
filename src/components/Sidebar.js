@@ -4,6 +4,7 @@ import { IoMdArrowForward } from "react-icons/io";
 import { FiTrash2 } from "react-icons/fi";
 import { useCartContext } from "../contexts/CartContext";
 import CartItem from "./CartItem";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const { handleClose, isOpen } = useSidebarContext();
@@ -33,13 +34,15 @@ const Sidebar = () => {
         })}
       </div>
 
-      <div className=" flex flex-col gap-y-3 py-4 mt-4 px-7">
+      <div className=" flex flex-col gap-y-3 py-4 mt-4 px-6">
         <div className="flex w-full justify-between items-center">
           <div className="uppercase font-semibold">
             <span className="mr-2">Total:</span>$ {total}
           </div>
           <div className="cursor-pointer py-4 bg-red-500 text-white w-12 h-12 flex justify-center items-center text-xl" onClick={clearCart}><FiTrash2/></div>
         </div>
+        <Link to={'/'} className="bg-gray-200 flex p-4 justify-center items-center text-primary w-full font-medium">View Cart</Link>
+        <Link to={'/'} className="bg-primary flex p-4 justify-center items-center text-white w-full font-medium">Checkout</Link>
       </div>
     </div>
   );
