@@ -11,15 +11,15 @@ const Hero = () => {
           <div className="font-semibold flex items-center uppercase">
             <div className="w-10 h-[2px] bg-red-500 mr-3"></div>New Trend
           </div>
-          <h1 className="text-[70px] leading-[1.1] font-light mb-4">
-            AUTO SALE STYLISH <br />
-            <span className="font-semibold">WOMENS</span>
+          <h1 className="md:text-[70px] sm:text-[60px]  min-[320px]:text-[30px] leading-[1.1] sm:leading-normal font-light mb-4">
+           Shop with us, Discover Amazing Products! <br />
+            <span className="font-semibold">Lee Products</span>
           </h1>
           <Link
             to={"/"}
             className="self-start uppercase font-semibold border-b-2  border-b-primary "
           >
-            {" "}
+          
             Discover More
           </Link>
         </div>
