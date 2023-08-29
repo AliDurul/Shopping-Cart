@@ -1,5 +1,7 @@
 ## Welcome to My Project! 👋
 
+![shoppingCart](https://github.com/AliDurul/Shopping-Cart/assets/80897590/d492d45f-b971-4a68-817e-a9d18a53cdbb)
+
 Thank you for visiting my projects! I'm thrilled to have you here, and I hope you find it interesting and helpful.
 
 ## About Me
